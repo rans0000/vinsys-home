@@ -12,3 +12,5 @@
 // );
 
 // add custom js below
+
+import "./main";

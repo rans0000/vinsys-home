@@ -417,10 +417,11 @@ ul.nav-list > li > a:hover {
 }
 
 @media only screen and (max-width: 767px) {
-    body {
+    .has-scroll-smooth body {
         overflow-y: auto;
     }
     .departments-inner-wrapper {
+        transform: none !important;
         width: 100vw;
         height: auto;
         flex-wrap: wrap;

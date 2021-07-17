@@ -417,6 +417,9 @@ ul.nav-list > li > a:hover {
 }
 
 @media only screen and (max-width: 767px) {
+    body {
+        overflow-y: auto;
+    }
     .departments-inner-wrapper {
         width: 100vw;
         height: auto;

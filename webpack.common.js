@@ -28,7 +28,7 @@ module.exports = {
               esModule: false,
               name: '[name].[ext]',
               outputPath: 'images/',
-              publicPath: '/images/'
+              publicPath: 'images/'
             }
           }
         ]

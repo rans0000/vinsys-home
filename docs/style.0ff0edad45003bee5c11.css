@@ -1,29 +1,36 @@
-/*! locomotive-scroll v3.5.4 | MIT License | https://github.com/locomotivemtl/locomotive-scroll */
+/*! locomotive-scroll v4.1.1 | MIT License | https://github.com/locomotivemtl/locomotive-scroll */
 html.has-scroll-smooth {
     overflow: hidden;
 }
-
 html.has-scroll-dragging {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
 }
-
 .has-scroll-smooth body {
     overflow: hidden;
 }
-
 .has-scroll-smooth [data-scroll-container] {
     min-height: 100vh;
 }
-
+[data-scroll-direction="horizontal"] [data-scroll-container] {
+    height: 100vh;
+    display: inline-block;
+    white-space: nowrap;
+}
+[data-scroll-direction="horizontal"] [data-scroll-section] {
+    display: inline-block;
+    vertical-align: top;
+    white-space: nowrap;
+    height: 100%;
+}
 .c-scrollbar {
     position: absolute;
     right: 0;
     top: 0;
     width: 11px;
-    height: 100vh;
+    height: 100%;
     transform-origin: center right;
     transition: transform 0.3s, opacity 0.3s;
     opacity: 0;
@@ -32,16 +39,25 @@ html.has-scroll-dragging {
     transform: scaleX(1.45);
 }
 .c-scrollbar:hover,
-.has-scroll-scrolling .c-scrollbar,
-.has-scroll-dragging .c-scrollbar {
+.has-scroll-dragging .c-scrollbar,
+.has-scroll-scrolling .c-scrollbar {
     opacity: 1;
 }
-
+[data-scroll-direction="horizontal"] .c-scrollbar {
+    width: 100%;
+    height: 10px;
+    top: auto;
+    bottom: 0;
+    transform: scaleY(1);
+}
+[data-scroll-direction="horizontal"] .c-scrollbar:hover {
+    transform: scaleY(1.3);
+}
 .c-scrollbar_thumb {
     position: absolute;
     top: 0;
     right: 0;
-    background-color: black;
+    background-color: #000;
     opacity: 0.5;
     width: 7px;
     border-radius: 10px;
@@ -52,6 +68,10 @@ html.has-scroll-dragging {
 .has-scroll-dragging .c-scrollbar_thumb {
     cursor: -webkit-grabbing;
     cursor: grabbing;
+}
+[data-scroll-direction="horizontal"] .c-scrollbar_thumb {
+    right: auto;
+    bottom: 0;
 }
 
 @font-face {
@@ -102,6 +122,28 @@ html.has-scroll-dragging {
         background-position: 50% 50%;
     }
 }
+@keyframes hide-scroll {
+    from {
+        overflow-y: hidden;
+    }
+    to {
+        overflow-y: auto;
+    }
+}
+@keyframes pulsate {
+    0% {
+        opacity: 1;
+    }
+    33% {
+        opacity: 0.5;
+    }
+    66% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 0.7;
+    }
+}
 
 * {
     box-sizing: border-box;
@@ -130,6 +172,20 @@ body {
     left: 0;
     padding: 4rem 4rem 2rem;
 }
+.header-wrapper:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: block;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    background: rgb(15, 16, 48);
+    background: linear-gradient(0deg, rgba(15, 16, 48, 0) 0%, rgba(15, 16, 48, 1) 100%);
+}
 .header-wrapper a.logo:link,
 .header-wrapper a.logo:visited {
     /* background: url(../images/vinsys-logo.svg); */
@@ -142,10 +198,18 @@ body {
 .btn-main-menu-open {
     width: 4rem;
     height: 4rem;
+    line-height: 4rem;
     white-space: nowrap;
     text-indent: -100000px;
     cursor: pointer;
     overflow: hidden;
+    background: url(images/btn-hamburger.svg) no-repeat 50% 50%;
+    border: 0;
+    padding: 0;
+}
+.btn-main-menu-open:hover,
+.btn-main-menu-open:active {
+    animation: pulsate 0.3s forwards;
 }
 .main-wrapper {
     height: 100%;
@@ -154,7 +218,7 @@ body {
 .departments-wrapper {
 }
 .departments-inner-wrapper {
-    width: calc(((100vw / 3) * 5));
+    width: calc(((100vw / 3) * 6));
     display: flex;
     flex-wrap: nowrap;
     /* padding-left: 200px; */
@@ -166,7 +230,7 @@ body {
     /* border: 1px solid #eee; */
     border-width: 0 1px;
     padding: 0 4rem;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     z-index: 1;
@@ -197,19 +261,22 @@ body {
     animation: bg-noise 10s ease-in-out alternate infinite;
 }
 .dept-courses.dept-item:before {
-    background: #a50a02 url(images/sys-bg-01.jpg) 50% 50% no-repeat;
+    background: #0278a5 url(images/sys-bg-01.png) 50% 50% no-repeat;
 }
 .dept-it.dept-item:before {
-    background: #fdb913 url(images/sys-bg-02.jpg) 50% 50% no-repeat;
+    background: #0278a5 url(images/sys-bg-02.png) 50% 50% no-repeat;
 }
 .dept-lang.dept-item:before {
-    background: #46001e url(images/sys-bg-01.jpg) 50% 50% no-repeat;
+    background: #0278a5 url(images/sys-bg-03.png) 50% 50% no-repeat;
 }
 .dept-vikvins.dept-item:before {
-    background: #ffb66d url(images/sys-bg-02.jpg) 50% 50% no-repeat;
+    background: #0278a5 url(images/sys-bg-04.png) 50% 50% no-repeat;
 }
 .dept-learning.dept-item:before {
-    background: #3268ae url(images/sys-bg-01.jpg) 50% 50% no-repeat;
+    background: #0278a5 url(images/sys-bg-05.png) 50% 50% no-repeat;
+}
+.dept-hr.dept-item:before {
+    background: #0278a5 url(images/sys-bg-06.png) 50% 50% no-repeat;
 }
 .departments-wrapper .text-wrapper {
     width: 100%;
@@ -236,6 +303,7 @@ body {
     font-size: 1.8rem;
     line-height: 2.6rem;
     pointer-events: none;
+    white-space: normal;
     user-select: none;
     padding-right: 5rem;
     opacity: 0;
@@ -248,10 +316,12 @@ body {
     font-size: 2rem;
     font-weight: 600;
     line-height: 6.4rem;
+    display: inline-block;
     height: 6.4rem;
     padding: 0 2rem;
     min-width: 18rem;
     text-align: center;
+    text-decoration: none;
     cursor: pointer;
     border: none;
     position: relative;
@@ -276,13 +346,16 @@ body {
     pointer-events: none;
 }
 .btn-arrowed .arrow-right {
-    position: absolute;
-    top: 50%;
-    left: 100%;
     width: 3rem;
-    height: 2px;
-    background-color: #fff;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    background: url(images/arrow-right.svg) no-repeat 100% 50%;
     pointer-events: none;
+}
+.btn-arrowed:hover {
+    animation: pulsate 0.3s forwards;
 }
 .departments-wrapper .dept-item:hover .text-wrapper > .title {
     transform: translate3d(0, 0, 0);
@@ -331,13 +404,24 @@ body {
 }
 .btn-prev,
 .btn-next {
-    width: 12rem;
+    width: 9rem;
     height: 5.5rem;
-    background: #0f1030;
     position: relative;
     border: 0;
     color: #fff;
     cursor: pointer;
+    background: #0f1030 url(images/arrow-left.svg) no-repeat 50% 50%;
+    background-position: calc(50% + 0.5rem);
+}
+.btn-next {
+    background: #0f1030 url(images/arrow-right.svg) no-repeat 50% 50%;
+    background-position: calc(50% - 0.5rem);
+}
+.btn-prev:hover,
+.btn-prev:active,
+.btn-next:hover,
+.btn-next:active {
+    animation: pulsate 0.3s forwards;
 }
 .btn-prev > .text-wrap,
 .btn-next > .text-wrap {
@@ -362,6 +446,7 @@ body {
     left: -3rem;
     top: -5rem;
     z-index: -1;
+    clip-path: polygon(0 5rem, 3rem 5rem, 3rem 100%, 0 100%);
 }
 
 .nav-wrapper {
@@ -373,7 +458,7 @@ body {
     left: 0;
     z-index: 10;
     display: flex;
-    overflow-y: auto;
+    overflow-y: hidden;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.5s, visibility 0s 0.5s;
@@ -381,7 +466,9 @@ body {
 .nav-wrapper.open {
     opacity: 1;
     visibility: visible;
+    /* overflow-y: auto; */
     transition: opacity 0.5s;
+    animation: hide-scroll 0.5s 0.5s forwards;
 }
 .nav-wrapper-inner {
     width: 100%;
@@ -401,8 +488,8 @@ header.nav-header {
     color: #989898;
 }
 .btn-main-menu-close {
-    width: 3.3rem;
-    height: 3.3rem;
+    width: 3.4rem;
+    height: 3.4rem;
     top: 0;
     right: 0;
     background: #fff;
@@ -413,6 +500,11 @@ header.nav-header {
     overflow: hidden;
     border: 0;
     margin: 1.3rem -3.6rem 0 0;
+    background: url(images/btn-close.svg) no-repeat 50% 50%;
+}
+.btn-main-menu-close:hover,
+.btn-main-menu-close:active {
+    animation: pulsate 0.3s forwards;
 }
 .nav-items-wrapper {
     display: flex;
@@ -457,6 +549,7 @@ ul.nav-list > li > a:visited {
     line-height: 4rem;
     color: #fff;
     text-decoration: none;
+    transition: color 0.3s;
 }
 ul.nav-list > li > a:hover {
     color: #fdb913;
@@ -465,7 +558,7 @@ ul.nav-list > li > a:hover {
 
 @media only screen and (max-width: 900px) {
     .departments-inner-wrapper {
-        width: calc((100vw / 2) * 5);
+        width: calc((100vw / 2) * 6);
     }
     .departments-wrapper .dept-item {
         width: calc((100vw / 2));
@@ -475,6 +568,13 @@ ul.nav-list > li > a:hover {
 @media only screen and (max-width: 767px) {
     .has-scroll-smooth body {
         overflow-y: auto;
+    }
+    .has-scroll-scrolling .header-wrapper:before {
+        opacity: 1;
+    }
+    .logo > img,
+    .btn-main-menu-open {
+        filter: brightness(0) invert(1);
     }
     .departments-inner-wrapper {
         transform: none !important;
@@ -487,6 +587,7 @@ ul.nav-list > li > a:hover {
         width: 100vw;
         height: 100vh;
         margin-bottom: -10vh;
+        display: flex;
     }
     .departments-wrapper .dept-item:last-child {
         margin-bottom: 0;
@@ -520,6 +621,10 @@ ul.nav-list > li > a:hover {
         opacity: 1;
         transform: translate3d(0, 2rem, 0);
     }
+    .nav-section {
+        flex-basis: 100%;
+        width: 100%;
+    }
     footer.footer-wrapper {
         display: none;
     }
@@ -527,4 +632,4 @@ ul.nav-list > li > a:hover {
 
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:block}h1{font-size:2em;margin:.67em 0}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}b,strong{font-weight:bolder}code{font-family:monospace,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=button],[type=reset],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}progress{vertical-align:baseline}textarea{overflow:auto}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}details{display:block}summary{display:list-item}[hidden],template{display:none}
 
-/*# sourceMappingURL=style.3702f53773dbcb5de6a3.css.map*/
+/*# sourceMappingURL=style.0ff0edad45003bee5c11.css.map*/

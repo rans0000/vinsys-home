@@ -171,19 +171,22 @@ body {
     animation: bg-noise 10s ease-in-out alternate infinite;
 }
 .dept-courses.dept-item:before {
-    background: #a50a02 url(../images/sys-bg-01.jpg) 50% 50% no-repeat;
+    background: #a50a02 url(../images/sys-bg-01.png) 50% 50% no-repeat;
 }
 .dept-it.dept-item:before {
-    background: #fdb913 url(../images/sys-bg-02.jpg) 50% 50% no-repeat;
+    background: #fdb913 url(../images/sys-bg-02.png) 50% 50% no-repeat;
 }
 .dept-lang.dept-item:before {
-    background: #46001e url(../images/sys-bg-01.jpg) 50% 50% no-repeat;
+    background: #46001e url(../images/sys-bg-03.png) 50% 50% no-repeat;
 }
 .dept-vikvins.dept-item:before {
-    background: #ffb66d url(../images/sys-bg-02.jpg) 50% 50% no-repeat;
+    background: #ffb66d url(../images/sys-bg-04.png) 50% 50% no-repeat;
 }
 .dept-learning.dept-item:before {
-    background: #3268ae url(../images/sys-bg-01.jpg) 50% 50% no-repeat;
+    background: #3268ae url(../images/sys-bg-05.png) 50% 50% no-repeat;
+}
+.dept-hr.dept-item:before {
+    background: #3268ae url(../images/sys-bg-06.png) 50% 50% no-repeat;
 }
 .departments-wrapper .text-wrapper {
     width: 100%;

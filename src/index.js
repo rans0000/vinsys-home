@@ -1,8 +1,5 @@
 import * as OfflinePluginRuntime from 'offline-plugin/runtime';
 
-// import './fonts/libre-baskerville-v5-latin-regular.woff';
-// import './fonts/libre-baskerville-v5-latin-regular.woff2';
-
 // import '../fonts/Poppins-Regular.ttf';
 // import '../fonts/Poppins-Light.ttf';
 // import '../fonts/Poppins-Medium.ttf';

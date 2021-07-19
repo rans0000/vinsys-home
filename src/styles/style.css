@@ -46,6 +46,28 @@
         background-position: 50% 50%;
     }
 }
+@keyframes hide-scroll {
+    from {
+        overflow-y: hidden;
+    }
+    to {
+        overflow-y: auto;
+    }
+}
+@keyframes pulsate {
+    0% {
+        opacity: 1;
+    }
+    33% {
+        opacity: 0.5;
+    }
+    66% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 0.7;
+    }
+}
 
 * {
     box-sizing: border-box;
@@ -86,10 +108,18 @@ body {
 .btn-main-menu-open {
     width: 4rem;
     height: 4rem;
+    line-height: 4rem;
     white-space: nowrap;
     text-indent: -100000px;
     cursor: pointer;
     overflow: hidden;
+    background: url(../images/btn-hamburger.svg) no-repeat 50% 50%;
+    border: 0;
+    padding: 0;
+}
+.btn-main-menu-open:hover,
+.btn-main-menu-open:active {
+    animation: pulsate 0.3s forwards;
 }
 .main-wrapper {
     height: 100%;
@@ -192,10 +222,12 @@ body {
     font-size: 2rem;
     font-weight: 600;
     line-height: 6.4rem;
+    display: inline-block;
     height: 6.4rem;
     padding: 0 2rem;
     min-width: 18rem;
     text-align: center;
+    text-decoration: none;
     cursor: pointer;
     border: none;
     position: relative;
@@ -220,13 +252,16 @@ body {
     pointer-events: none;
 }
 .btn-arrowed .arrow-right {
-    position: absolute;
-    top: 50%;
-    left: 100%;
     width: 3rem;
-    height: 2px;
-    background-color: #fff;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    background: url(../images/arrow-right.svg) no-repeat 100% 50%;
     pointer-events: none;
+}
+.btn-arrowed:hover {
+    animation: pulsate 0.3s forwards;
 }
 .departments-wrapper .dept-item:hover .text-wrapper > .title {
     transform: translate3d(0, 0, 0);
@@ -275,13 +310,24 @@ body {
 }
 .btn-prev,
 .btn-next {
-    width: 12rem;
+    width: 9rem;
     height: 5.5rem;
-    background: #0f1030;
     position: relative;
     border: 0;
     color: #fff;
     cursor: pointer;
+    background: #0f1030 url(../images/arrow-left.svg) no-repeat 50% 50%;
+    background-position: calc(50% + 0.5rem);
+}
+.btn-next {
+    background: #0f1030 url(../images/arrow-right.svg) no-repeat 50% 50%;
+    background-position: calc(50% - 0.5rem);
+}
+.btn-prev:hover,
+.btn-prev:active,
+.btn-next:hover,
+.btn-next:active {
+    animation: pulsate 0.3s forwards;
 }
 .btn-prev > .text-wrap,
 .btn-next > .text-wrap {
@@ -306,6 +352,7 @@ body {
     left: -3rem;
     top: -5rem;
     z-index: -1;
+    clip-path: polygon(0 5rem, 3rem 5rem, 3rem 100%, 0 100%);
 }
 
 .nav-wrapper {
@@ -317,7 +364,7 @@ body {
     left: 0;
     z-index: 10;
     display: flex;
-    overflow-y: auto;
+    overflow-y: hidden;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.5s, visibility 0s 0.5s;
@@ -325,7 +372,9 @@ body {
 .nav-wrapper.open {
     opacity: 1;
     visibility: visible;
+    /* overflow-y: auto; */
     transition: opacity 0.5s;
+    animation: hide-scroll 0.5s 0.5s forwards;
 }
 .nav-wrapper-inner {
     width: 100%;
@@ -345,8 +394,8 @@ header.nav-header {
     color: #989898;
 }
 .btn-main-menu-close {
-    width: 3.3rem;
-    height: 3.3rem;
+    width: 3.4rem;
+    height: 3.4rem;
     top: 0;
     right: 0;
     background: #fff;
@@ -357,6 +406,11 @@ header.nav-header {
     overflow: hidden;
     border: 0;
     margin: 1.3rem -3.6rem 0 0;
+    background: url(../images/btn-close.svg) no-repeat 50% 50%;
+}
+.btn-main-menu-close:hover,
+.btn-main-menu-close:active {
+    animation: pulsate 0.3s forwards;
 }
 .nav-items-wrapper {
     display: flex;
@@ -401,6 +455,7 @@ ul.nav-list > li > a:visited {
     line-height: 4rem;
     color: #fff;
     text-decoration: none;
+    transition: color 0.3s;
 }
 ul.nav-list > li > a:hover {
     color: #fdb913;
@@ -419,6 +474,10 @@ ul.nav-list > li > a:hover {
 @media only screen and (max-width: 767px) {
     .has-scroll-smooth body {
         overflow-y: auto;
+    }
+    .logo > img,
+    .btn-main-menu-open {
+        filter: brightness(0) invert(1);
     }
     .departments-inner-wrapper {
         transform: none !important;
@@ -463,6 +522,10 @@ ul.nav-list > li > a:hover {
     .btn-arrowed {
         opacity: 1;
         transform: translate3d(0, 2rem, 0);
+    }
+    .nav-section {
+        flex-basis: 100%;
+        width: 100%;
     }
     footer.footer-wrapper {
         display: none;

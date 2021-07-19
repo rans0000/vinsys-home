@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="22" viewBox="0 0 40 22">
+  <g id="btn-hamburger" transform="translate(-685 -184)">
+    <rect id="bar3" width="40" height="2" transform="translate(685 184)" fill="#0f1030"/>
+    <rect id="bar2" width="30" height="2" transform="translate(685 194)" fill="#0f1030"/>
+    <rect id="bar1" width="20" height="2" transform="translate(685 204)" fill="#0f1030"/>
+  </g>
+</svg>

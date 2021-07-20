@@ -22,6 +22,7 @@ class Example {
             reloadOnContextChange: true,
             scrollFromAnywhere: true,
             touchMultiplier: 2,
+            multiplier: 5,
             lerp: 0.05,
             smartphone: {
                 smooth: true,

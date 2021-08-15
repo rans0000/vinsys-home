@@ -178,6 +178,9 @@ body {
     will-change: opacity;
     background-size: cover;
 }
+.departments-wrapper .dept-item:last-child::before {
+    clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%);
+}
 .departments-wrapper .dept-item:hover:before {
     opacity: 1;
     filter: saturate(0.9) contrast(0.6);

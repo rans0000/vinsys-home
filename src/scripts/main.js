@@ -55,7 +55,7 @@ class Example {
 
 function typewritterEffect() {
     var options = {
-        strings: ['Over 400 Certification programs', 'Over 500 Million words translated', 'IT Service Partner for vietnam ^1000'],
+        strings: ['Over 400 Certification programs', 'Over 500 Million words translated', 'IT Service Partner for Vietnam ^1000'],
         typeSpeed: 30,
         onComplete: () => {
             const typewritterEl = document.getElementById("typewritter-wrapper");

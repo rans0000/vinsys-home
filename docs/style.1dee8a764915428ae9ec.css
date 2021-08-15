@@ -241,7 +241,8 @@ body {
     justify-content: center;
     z-index: 1;
 }
-.departments-wrapper .dept-item:hover {
+.departments-wrapper .dept-item:hover,
+.departments-wrapper .dept-item.selected {
     z-index: 2;
 }
 .departments-wrapper .dept-item:before {
@@ -263,7 +264,8 @@ body {
 .departments-wrapper .dept-item:last-child::before {
     clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%);
 }
-.departments-wrapper .dept-item:hover:before {
+.departments-wrapper .dept-item:hover:before,
+.departments-wrapper .dept-item.selected:before {
     opacity: 1;
     filter: saturate(0.9) contrast(0.6);
     transition: all 0.5s ease-out;
@@ -420,7 +422,8 @@ body {
 .btn-arrowed:hover {
     animation: pulsate 0.3s forwards;
 }
-.departments-wrapper .dept-item:hover .text-wrapper > .title {
+.departments-wrapper .dept-item:hover .text-wrapper > .title,
+.departments-wrapper .dept-item.selected .text-wrapper > .title {
     transform: translate3d(0, 0, 0);
     color: #fff;
     position: relative;
@@ -439,17 +442,20 @@ body {
     transform: translate3d(0, -2rem, 0);
     transition: opacity 0.1s, transform 0.2s 0.3s;
 }
-.departments-wrapper .dept-item:hover .text-wrapper > .title::before {
+.departments-wrapper .dept-item:hover .text-wrapper > .title::before,
+.departments-wrapper .dept-item.selected .text-wrapper > .title::before {
     transform: translate3d(0, 0, 0);
     opacity: 1;
     visibility: visible;
 }
-.departments-wrapper .dept-item:hover .text-wrapper > .inner {
+.departments-wrapper .dept-item:hover .text-wrapper > .inner,
+.departments-wrapper .dept-item.selected .text-wrapper > .inner {
     transform: translate3d(0, 4rem, 0);
     color: #fff;
     opacity: 1;
 }
-.departments-wrapper .dept-item:hover .btn-arrowed {
+.departments-wrapper .dept-item:hover .btn-arrowed,
+.departments-wrapper .dept-item.selected .btn-arrowed {
     transform: translate3d(0, 6rem, 0);
     opacity: 1;
     pointer-events: all;
@@ -740,4 +746,4 @@ ul.nav-list > li > a:hover {
 
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}b,strong{font-weight:bolder}code{font-family:monospace,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=button],[type=reset],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}progress{vertical-align:baseline}textarea{overflow:auto}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}details{display:block}summary{display:list-item}[hidden],template{display:none}
 
-/*# sourceMappingURL=style.7d8c49f6c7818df2b195.css.map*/
+/*# sourceMappingURL=style.1dee8a764915428ae9ec.css.map*/

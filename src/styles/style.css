@@ -24,6 +24,12 @@
 }
 @font-face {
     font-family: "Poppins";
+    src: url("../fonts/Poppins-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Poppins";
     src: url("../fonts/Poppins-BoldItalic.ttf") format("truetype");
     font-weight: 700;
     font-style: italic;
@@ -143,7 +149,7 @@ body {
 }
 .departments-inner-wrapper {
     width: calc(((100vw / 3) * 6));
-    display: flex;
+    display: flex !important;
     flex-wrap: nowrap;
     /* padding-left: 200px; */
 }
@@ -202,7 +208,8 @@ body {
 .dept-learning.dept-item:before {
     background: #0278a5 url(../images/sys-bg-05.png) 50% 50% no-repeat;
 }
-.dept-hr.dept-item:before {
+.dept-hr.dept-item:before,
+.dept-contact.dept-item:before {
     background: #0278a5 url(../images/sys-bg-06.png) 50% 50% no-repeat;
 }
 .departments-wrapper .text-wrapper {
@@ -225,7 +232,7 @@ body {
     display: block;
 }
 
-.departments-wrapper .text-wrapper > p {
+.departments-wrapper .text-wrapper > .inner {
     font-weight: 300;
     font-size: 1.8rem;
     line-height: 2.6rem;
@@ -237,6 +244,59 @@ body {
     transform: translate3d(0, 5rem, 0);
     transition: 0.3s 0.5s;
     will-change: opacity transform;
+}
+
+.link-icon {
+    display: flex;
+    padding-left: 3rem;
+    color: #fff;
+    text-decoration: none;
+    user-select: all;
+    pointer-events: all;
+    cursor: pointer;
+}
+.link-icon.link-mail {
+    background: url(../images/icon-envelope.png) no-repeat 0 50%;
+}
+.link-icon.link-phone {
+    background: url(../images/icon-phone-call.png) no-repeat 0 50%;
+}
+
+.dept-item .link-social {
+    display: flex;
+    list-style: none inside none;
+    padding: 0;
+    margin: 1rem 0 0;
+}
+.dept-item .link-social > li {
+    /* li */
+}
+
+.dept-item .link-social a:link,
+.dept-item .link-social a:visited {
+    width: 3.2rem;
+    height: 3.2rem;
+    display: block;
+    text-indent: 4000%;
+    white-space: nowrap;
+    overflow: hidden;
+    pointer-events: all;
+    background-size: contain;
+}
+.dept-item .link-social > li {
+    margin-right: 1rem;
+}
+.dept-item .link-social .link-social-youtube {
+    background: url(../images/icon-youtube.png) no-repeat 0 50%;
+}
+.dept-item .link-social .link-social-linkedin {
+    background: url(../images/icon-linkedin.png) no-repeat 0 50%;
+}
+.dept-item .link-social .link-social-twitter {
+    background: url(../images/icon-twitter.png) no-repeat 0 50%;
+}
+.dept-item .link-social .link-social-facebook {
+    background: url(../images/icon-facebook.png) no-repeat 0 50%;
 }
 
 .btn-arrowed {
@@ -308,13 +368,13 @@ body {
     opacity: 1;
     visibility: visible;
 }
-.departments-wrapper .dept-item:hover .text-wrapper > p {
-    transform: translate3d(0, 2rem, 0);
+.departments-wrapper .dept-item:hover .text-wrapper > .inner {
+    transform: translate3d(0, 4rem, 0);
     color: #fff;
     opacity: 1;
 }
 .departments-wrapper .dept-item:hover .btn-arrowed {
-    transform: translate3d(0, 2rem, 0);
+    transform: translate3d(0, 6rem, 0);
     opacity: 1;
     pointer-events: all;
 }
@@ -483,12 +543,45 @@ ul.nav-list > li > a:hover {
     text-decoration: underline;
 }
 
+.typewritter-wrapper {
+    position: fixed;
+    z-index: 50;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    display: flex;
+    padding: 0 2rem;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    opacity: 1;
+    transition: opacity 0.4s ease-out;
+}
+.typewritter-wrapper.hide {
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+}
+.typewritter-inner {
+    text-align: center;
+    font-weight: 700;
+    font-size: 7rem;
+    line-height: 1.5;
+    color: #989898;
+    pointer-events: none;
+    user-select: none;
+}
+
 @media only screen and (max-width: 900px) {
     .departments-inner-wrapper {
         width: calc((100vw / 2) * 6);
     }
     .departments-wrapper .dept-item {
         width: calc((100vw / 2));
+    }
+    .typewritter-inner {
+        font-size: 5rem;
     }
 }
 
@@ -539,7 +632,7 @@ ul.nav-list > li > a:hover {
         visibility: visible;
         transform: translate3d(0, 0, 0);
     }
-    .departments-wrapper .text-wrapper > p {
+    .departments-wrapper .text-wrapper > .inner {
         color: #fff;
         opacity: 1;
         transform: translate3d(0, 2rem, 0);
@@ -554,5 +647,17 @@ ul.nav-list > li > a:hover {
     }
     footer.footer-wrapper {
         display: none;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .departments-wrapper .text-wrapper > .inner {
+        padding-right: 0;
+    }
+    .departments-wrapper .dept-item:before {
+        background-size: cover;
+    }
+    .typewritter-inner {
+        font-size: 5rem;
     }
 }

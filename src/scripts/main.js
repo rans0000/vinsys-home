@@ -1,4 +1,5 @@
 import LocomotiveScroll from 'locomotive-scroll';
+import Typed from 'typed.js';
 
 function hasOverlap(rect1, rect2) {
     return !(rect1.right < rect2.left || rect1.left > rect2.right || rect1.bottom < rect2.top || rect1.top > rect2.bottom);
@@ -52,12 +53,30 @@ class Example {
 
 }
 
+function typewritterEffect() {
+    var options = {
+        strings: ['Over 400 Certification programs', 'Over 500 Million words translated', 'IT Service Partner for vietnam ^1000'],
+        typeSpeed: 30,
+        onComplete: () => {
+            const typewritterEl = document.getElementById("typewritter-wrapper");
+            typewritterEl.classList.add("hide")
+            setTimeout(() => {
+                typewritterEl.remove();
+            }, 400)
+        }
+    };
+
+    var typed = new Typed('.typewritter-inner', options);
+}
+
 
 window.addEventListener('DOMContentLoaded', (event) => {
     const logo = document.querySelector(".logo > img");
     const navWrapper = document.querySelector(".nav-wrapper");
     let isNavOpen = false;
     const depts = document.querySelectorAll(".dept-item");
+
+    typewritterEffect();
 
     const example = new Example({
         root: document.querySelector('.scroll-animations-example'),

@@ -93,19 +93,25 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     depts.forEach(dept => {
         dept.addEventListener("mouseenter", (event) => {
-            if (event.target.classList.contains("dept-item")) {
+            const elem = event.target;
+            depts[0].classList.remove("selected");
+            if (elem.classList.contains("dept-item")) {
                 const rect1 = logo.getBoundingClientRect();
-                const rect2 = event.target.getBoundingClientRect();
+                const rect2 = elem.getBoundingClientRect();
                 const isOverlap = hasOverlap(rect1, rect2);
                 if (isOverlap) {
                     logo.classList.add("white-logo");
                 }
+                else {
+                    logo.classList.remove("white-logo");
+                }
             }
         });
         dept.addEventListener("mouseout", (event) => {
-            if (event.target.classList.contains("dept-item")) {
+            const elem = event.target;
+            if (elem.classList.contains("dept-item")) {
                 const rect1 = logo.getBoundingClientRect();
-                const rect2 = event.target.getBoundingClientRect();
+                const rect2 = elem.getBoundingClientRect();
                 const isOverlap = hasOverlap(rect1, rect2);
                 if (isOverlap) {
                     logo.classList.remove("white-logo");

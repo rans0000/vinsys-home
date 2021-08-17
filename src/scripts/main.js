@@ -10,7 +10,7 @@ class Example {
         this.root = options.root;
         this.depts = options.depts;
         this.currentSlide = 0;
-        this.maxSlide = 5;
+        this.maxSlide = 6;
         this.init();
     }
 
@@ -26,7 +26,7 @@ class Example {
             multiplier: 5,
             lerp: 0.05,
             smartphone: {
-                smooth: true,
+                smooth: false,
                 breakpoint: 767,
             },
             tablet: {
@@ -39,18 +39,15 @@ class Example {
             this.currentSlide = clampNumber(this.currentSlide - 1, 0, this.maxSlide - 3);
             const slide = this.depts[this.currentSlide];
             console.log(this.currentSlide);
-            this.scroll.scrollTo(slide);
+            this.scroll.scrollTo(slide, { duration: 100 });
         });
         document.querySelector(".btn-next").addEventListener("click", btn => {
             this.currentSlide = clampNumber(this.currentSlide + 1, 0, this.maxSlide - 3);
             const slide = this.depts[this.currentSlide];
             console.log(this.currentSlide);
-            this.scroll.scrollTo(slide);
+            this.scroll.scrollTo(slide, { duration: 100 });
         });
-
-
     }
-
 }
 
 function typewritterEffect() {

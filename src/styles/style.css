@@ -191,28 +191,33 @@ body {
 .departments-wrapper .dept-item:hover:before,
 .departments-wrapper .dept-item.selected:before {
     opacity: 1;
-    filter: saturate(0.9) contrast(0.6);
     transition: all 0.5s ease-out;
     animation: bg-noise 10s ease-in-out alternate infinite;
 }
 .dept-courses.dept-item:before {
     background: #0278a5 url(../images/sys-bg-01.png) 50% 50% no-repeat;
+    background-size: cover;
 }
 .dept-it.dept-item:before {
     background: #0278a5 url(../images/sys-bg-02.png) 50% 50% no-repeat;
+    background-size: cover;
 }
 .dept-lang.dept-item:before {
     background: #0278a5 url(../images/sys-bg-03.png) 50% 50% no-repeat;
+    background-size: cover;
 }
 .dept-vikvins.dept-item:before {
     background: #0278a5 url(../images/sys-bg-04.png) 50% 50% no-repeat;
+    background-size: cover;
 }
 .dept-learning.dept-item:before {
     background: #0278a5 url(../images/sys-bg-05.png) 50% 50% no-repeat;
+    background-size: cover;
 }
 .dept-hr.dept-item:before,
 .dept-contact.dept-item:before {
     background: #0278a5 url(../images/sys-bg-06.png) 50% 50% no-repeat;
+    background-size: cover;
 }
 .departments-wrapper .text-wrapper {
     width: 100%;

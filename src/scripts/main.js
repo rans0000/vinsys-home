@@ -26,44 +26,74 @@ class Example {
             multiplier: 5,
             lerp: 0.05,
             smartphone: {
-                smooth: false,
-                breakpoint: 767,
-            },
-            tablet: {
                 smooth: true,
-                breakpoint: 1024,
-            }
+                breakpoint: 767,
+                direction: 'vertical',
+            },
+            // tablet: {
+            //     smooth: false,
+            //     breakpoint: 1024,
+            //     // breakpoint: 767,
+            // }
         });
 
         document.querySelector(".btn-prev").addEventListener("click", btn => {
             this.currentSlide = clampNumber(this.currentSlide - 1, 0, this.maxSlide - 3);
             const slide = this.depts[this.currentSlide];
-            console.log(this.currentSlide);
+            // console.log(this.currentSlide);
             this.scroll.scrollTo(slide, { duration: 100 });
         });
         document.querySelector(".btn-next").addEventListener("click", btn => {
             this.currentSlide = clampNumber(this.currentSlide + 1, 0, this.maxSlide - 3);
             const slide = this.depts[this.currentSlide];
-            console.log(this.currentSlide);
+            // console.log(this.currentSlide);
             this.scroll.scrollTo(slide, { duration: 100 });
         });
     }
 }
 
 function typewritterEffect() {
+    const typewritterEl = document.getElementById("typewritter-wrapper");
+    const delay = 1000;
+
     var options = {
-        strings: ['Over 400 Certification programs', 'Over 500 Million words translated', 'IT Service Partner for Vietnam ^1000'],
+        strings: [`Over 400 Certification programs ^${1000}`, `Over 500 Million words translated ^${1000}`, `IT Service Partner for Vietnam ^${1000}`],
         typeSpeed: 30,
+        backDelay: 300,
+        loop: false,
+        onTypingResumed: (arrayPos, self) => {
+            self.el.classList.remove("end");
+        },
+        onTypingPaused: (arrayPos, self) => {
+            self.el.classList.add("end");
+        },
         onComplete: () => {
-            const typewritterEl = document.getElementById("typewritter-wrapper");
             typewritterEl.classList.add("hide")
             setTimeout(() => {
+                window.removeEventListener("keydown", removeEscListener)
+                typewritterEl.removeEventListener("click", removeEscListener)
                 typewritterEl.remove();
             }, 400)
         }
     };
 
     var typed = new Typed('.typewritter-inner', options);
+    // set esc event listener
+    window.addEventListener("keydown", removeEscListener);
+    typewritterEl.addEventListener("click", removeEscListener);
+
+    function removeEscListener(event) {
+        let evt = event || window.event;
+        let isEscape = false;
+        if ("key" in evt) {
+            isEscape = (evt.key === "Escape" || evt.key === "Esc");
+        } else {
+            isEscape = (evt.keyCode === 27);
+        }
+        if (isEscape || evt.detail >= 1) {
+            typewritterEl.classList.add("hide")
+        }
+    }
 }
 
 

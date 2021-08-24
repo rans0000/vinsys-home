@@ -579,9 +579,14 @@ ul.nav-list > li > a:hover {
     font-weight: 700;
     font-size: 7rem;
     line-height: 1.5;
-    color: #989898;
     pointer-events: none;
     user-select: none;
+    color: #989898;
+    transition: color 0.3s ease-out;
+}
+
+.typewritter-inner.end {
+    color: #dadada;
 }
 
 @media only screen and (max-width: 900px) {

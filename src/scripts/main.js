@@ -58,7 +58,7 @@ function typewritterEffect() {
 
     var options = {
         strings: [`Over 400 Certification programs ^${1000}`, `Over 500 Million words translated ^${1000}`, `IT Service Partner for Vietnam ^${1000}`],
-        typeSpeed: 30,
+        typeSpeed: 7,
         backDelay: 300,
         loop: false,
         onTypingResumed: (arrayPos, self) => {

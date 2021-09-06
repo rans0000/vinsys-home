@@ -268,6 +268,9 @@ body {
 .link-icon.link-phone {
     background: url(../images/icon-phone-call.png) no-repeat 0 50%;
 }
+.link-icon.link-blog {
+    background: url(../images/icon-blog.png) no-repeat 0 50%;
+}
 
 .dept-item .link-social {
     display: flex;

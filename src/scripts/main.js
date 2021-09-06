@@ -57,7 +57,7 @@ function typewritterEffect() {
     const delay = 1000;
 
     var options = {
-        strings: [`Over 400 Certification programs ^${1000}`, `Over 500 Million words translated ^${1000}`, `IT Service Partner for Vietnam ^${1000}`],
+        strings: [`Delivering skills, driving success ^${1000}`, `25 years of Legacy of Commitment ^${1000}`, `Trusted learning & tech partner of Fortune 500 ^${1000}`],
         typeSpeed: 7,
         backDelay: 300,
         loop: false,

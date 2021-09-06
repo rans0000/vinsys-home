@@ -30,24 +30,30 @@ class Example {
                 breakpoint: 767,
                 direction: 'vertical',
             },
-            // tablet: {
-            //     smooth: false,
-            //     breakpoint: 1024,
-            //     // breakpoint: 767,
-            // }
+            tablet: {
+                smooth: true,
+                breakpoint: 768,
+                direction: 'horizontal',
+                horizontalGesture: 'horizontal',
+            }
         });
+        window.dispatchEvent(new Event('resize'));
 
         document.querySelector(".btn-prev").addEventListener("click", btn => {
-            this.currentSlide = clampNumber(this.currentSlide - 1, 0, this.maxSlide - 3);
+            const vw = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            let sliderOffset = vw < 900 ? 2 : 3;
+            this.currentSlide = clampNumber(this.currentSlide - 1, 0, this.maxSlide - sliderOffset);
             const slide = this.depts[this.currentSlide];
             // console.log(this.currentSlide);
-            this.scroll.scrollTo(slide, { duration: 100 });
+            this.scroll.scrollTo(slide, { duration: 50 });
         });
         document.querySelector(".btn-next").addEventListener("click", btn => {
-            this.currentSlide = clampNumber(this.currentSlide + 1, 0, this.maxSlide - 3);
+            const vw = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            let sliderOffset = vw < 900 ? 2 : 3;
+            this.currentSlide = clampNumber(this.currentSlide + 1, 0, this.maxSlide - sliderOffset);
             const slide = this.depts[this.currentSlide];
             // console.log(this.currentSlide);
-            this.scroll.scrollTo(slide, { duration: 100 });
+            this.scroll.scrollTo(slide, { duration: 50 });
         });
     }
 }

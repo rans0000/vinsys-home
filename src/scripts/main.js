@@ -32,7 +32,7 @@ class Example {
             },
             tablet: {
                 smooth: true,
-                breakpoint: 768,
+                breakpoint: 1024,
                 direction: 'horizontal',
                 horizontalGesture: 'horizontal',
             }

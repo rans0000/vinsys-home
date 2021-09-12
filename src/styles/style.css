@@ -222,8 +222,11 @@ body {
 .departments-wrapper .text-wrapper {
     width: 100%;
     max-width: 40rem;
+    min-height: 35rem;
+    max-height: 100vh;
 }
 .departments-wrapper .text-wrapper > .title {
+    justify-self: flex-start;
     margin: 0;
     position: relative;
     z-index: 2;
@@ -651,6 +654,9 @@ ul.nav-list > li > a:hover {
     }
     .departments-wrapper .dept-item:last-child::before {
         clip-path: polygon(0 0, 100% 5vh, 100% 100%, 0 100%);
+    }
+    .departments-wrapper .text-wrapper {
+        min-height: auto;
     }
     .departments-wrapper .text-wrapper > .title {
         color: #fff;

@@ -261,6 +261,7 @@ body {
 }
 .departments-wrapper .dept-contact .text-wrapper > .inner > .link-icon {
     display: flex;
+    white-space: nowrap;
 }
 .departments-wrapper .dept-contact .text-wrapper > .inner > .link-icon .info-place {
     flex-grow: 1;
@@ -614,6 +615,15 @@ ul.nav-list > li > a:hover {
 }
 
 @media only screen and (max-width: 1024px) {
+    .departments-wrapper .text-wrapper > .title {
+        font-size: 2.9rem;
+    }
+    .departments-wrapper .dept-contact .text-wrapper > .inner > .link-icon {
+        margin: 1.5rem 0;
+    }
+    .dept-item .link-social > li {
+        margin-right: 2rem;
+    }
     .typewritter-inner {
         font-size: 4rem;
     }
@@ -686,6 +696,9 @@ ul.nav-list > li > a:hover {
     .btn-arrowed {
         opacity: 1;
         transform: translate3d(0, 2rem, 0);
+    }
+    .dept-contact .btn-arrowed {
+        transform: translate3d(0, 4rem, 0);
     }
     .nav-section {
         flex-basis: 100%;

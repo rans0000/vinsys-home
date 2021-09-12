@@ -577,6 +577,7 @@ ul.nav-list > li > a:hover {
     user-select: none;
 }
 .typewritter-inner {
+    padding: 0 2rem;
     text-align: center;
     font-weight: 700;
     font-size: 7rem;
@@ -598,15 +599,18 @@ ul.nav-list > li > a:hover {
     font-size: 1.1rem;
 }
 
+@media only screen and (max-width: 1024px) {
+    .typewritter-inner {
+        font-size: 4rem;
+    }
+}
+
 @media only screen and (max-width: 900px) {
     .departments-inner-wrapper {
         width: calc((100vw / 2) * 6);
     }
     .departments-wrapper .dept-item {
         width: calc((100vw / 2));
-    }
-    .typewritter-inner {
-        font-size: 5rem;
     }
 }
 
@@ -675,7 +679,7 @@ ul.nav-list > li > a:hover {
     }
 }
 
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 360px) {
     .departments-wrapper .text-wrapper > .inner {
         padding-right: 0;
     }
@@ -683,6 +687,6 @@ ul.nav-list > li > a:hover {
         background-size: cover;
     }
     .typewritter-inner {
-        font-size: 5rem;
+        font-size: 3rem;
     }
 }

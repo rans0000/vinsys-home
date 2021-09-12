@@ -110,7 +110,7 @@ body {
     top: 0;
     left: 0;
     display: block;
-    /* opacity: 0; */
+    opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s;
     background: rgb(15, 16, 48);
@@ -254,6 +254,17 @@ body {
     transform: translate3d(0, 5rem, 0);
     transition: 0.3s 0.5s;
     will-change: opacity transform;
+}
+.departments-wrapper .dept-contact .text-wrapper > .inner {
+    font-size: 1.4rem;
+    width: fit-content;
+}
+.departments-wrapper .dept-contact .text-wrapper > .inner > .link-icon {
+    display: flex;
+}
+.departments-wrapper .dept-contact .text-wrapper > .inner > .link-icon .info-place {
+    flex-grow: 1;
+    padding-right: 0.5rem;
 }
 
 .link-icon {
@@ -621,7 +632,7 @@ ul.nav-list > li > a:hover {
     .has-scroll-smooth body {
         overflow-y: auto;
     }
-    .has-scroll-scrolling .header-wrapper:before {
+    .header-wrapper:before {
         opacity: 1;
     }
     .logo > img,

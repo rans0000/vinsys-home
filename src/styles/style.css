@@ -483,8 +483,7 @@ header.nav-header {
 }
 .nav-heading {
     font-weight: 700;
-    font-style: italic;
-    font-size: 7rem;
+    font-size: 5rem;
     line-height: 10.5rem;
     color: #989898;
 }

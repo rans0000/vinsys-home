@@ -684,6 +684,12 @@ ul.nav-list > li > a:hover {
         margin-bottom: -10vh;
         display: flex;
     }
+    .departments-wrapper .dept-item:before {
+        filter: sepia(1);
+    }
+    .departments-wrapper .dept-item.is-inview:before {
+        filter: sepia(0);
+    }
     .departments-wrapper .dept-item:last-child {
         margin-bottom: 0;
     }

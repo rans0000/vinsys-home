@@ -23,8 +23,8 @@ class Example {
             reloadOnContextChange: true,
             scrollFromAnywhere: true,
             touchMultiplier: 2,
-            multiplier: 5,
-            lerp: 0.05,
+            multiplier: 2,
+            lerp: 0.07,
             smartphone: {
                 smooth: true,
                 breakpoint: 767,
@@ -32,7 +32,7 @@ class Example {
             },
             tablet: {
                 smooth: true,
-                breakpoint: 1024,
+                breakpoint: 768,
                 direction: 'horizontal',
                 horizontalGesture: 'horizontal',
             }

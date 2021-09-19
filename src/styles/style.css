@@ -595,7 +595,7 @@ ul.nav-list > li > a:hover {
     padding: 0 2rem;
     text-align: center;
     font-weight: 700;
-    font-size: 7rem;
+    font-size: 5rem;
     line-height: 1.5;
     pointer-events: none;
     user-select: none;
@@ -625,7 +625,7 @@ ul.nav-list > li > a:hover {
         margin-right: 2rem;
     }
     .typewritter-inner {
-        font-size: 4rem;
+        font-size: 3rem;
     }
 }
 

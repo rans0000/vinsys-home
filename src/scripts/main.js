@@ -46,6 +46,7 @@ class Example {
             const slide = this.depts[this.currentSlide];
             // console.log(this.currentSlide);
             this.scroll.scrollTo(slide, { duration: 50 });
+            this.depts.forEach(item => item === slide ? item.classList.add("selected") : item.classList.remove("selected"));
         });
         document.querySelector(".btn-next").addEventListener("click", btn => {
             const vw = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
@@ -54,6 +55,7 @@ class Example {
             const slide = this.depts[this.currentSlide];
             // console.log(this.currentSlide);
             this.scroll.scrollTo(slide, { duration: 50 });
+            this.depts.forEach(item => item === slide ? item.classList.add("selected") : item.classList.remove("selected"));
         });
     }
 }
@@ -66,6 +68,7 @@ function typewritterEffect() {
         strings: [`Delivering skills, Driving success ^${delay}`, `25 years of Legacy of Commitment ^${delay}`, `Trusted learning &amp; tech partner of Fortune&nbsp;500 ^${delay}`],
         typeSpeed: 7,
         backDelay: 300,
+
         loop: false,
         onTypingResumed: (arrayPos, self) => {
             self.el.classList.remove("end");
@@ -127,8 +130,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
     depts.forEach(dept => {
         dept.addEventListener("mouseenter", (event) => {
             const elem = event.target;
-            depts[0].classList.remove("selected");
+            // depts[0].classList.remove("selected");
             if (elem.classList.contains("dept-item")) {
+                depts.forEach(item => item === elem ? item.classList.add("selected") : item.classList.remove("selected"));
+
                 const rect1 = logo.getBoundingClientRect();
                 const rect2 = elem.getBoundingClientRect();
                 const isOverlap = hasOverlap(rect1, rect2);

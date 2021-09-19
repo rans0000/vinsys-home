@@ -656,8 +656,19 @@ ul.nav-list > li > a:hover {
     .header-wrapper:before {
         opacity: 1;
     }
-    .logo > img,
+    .header-wrapper a.logo:link,
+    .header-wrapper a.logo:visited {
+        width: 5rem;
+        height: 3.75rem;
+    }
+    .logo > img {
+        filter: brightness(0) invert(1);
+        height: auto;
+        width: 100%;
+    }
     .btn-main-menu-open {
+        width: 3.75rem;
+        height: 3.75rem;
         filter: brightness(0) invert(1);
     }
     .departments-inner-wrapper {

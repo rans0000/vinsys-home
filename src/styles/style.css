@@ -736,9 +736,10 @@ ul.nav-list > li > a:hover {
         max-width: none;
         max-height: none;
     }
-    .departments-wrapper .text-wrapper > .inner,
     .btn-arrowed,
+    .departments-wrapper .text-wrapper > .inner,
     .departments-wrapper .dept-item:hover .text-wrapper > .inner,
+    .departments-wrapper .dept-item.selected .text-wrapper > .inner,
     .dept-contact .btn-arrowed,
     .departments-wrapper .dept-item:hover .btn-arrowed,
     .departments-wrapper .dept-item.selected .btn-arrowed {

@@ -1,6 +1,8 @@
 import LocomotiveScroll from 'locomotive-scroll';
 import Typed from 'typed.js';
 
+let global_current_slide = 1;
+
 function hasOverlap(rect1, rect2) {
     return !(rect1.right < rect2.left || rect1.left > rect2.right || rect1.bottom < rect2.top || rect1.top > rect2.bottom);
 }
@@ -9,7 +11,7 @@ class Example {
     constructor(options) {
         this.root = options.root;
         this.depts = options.depts;
-        this.currentSlide = 0;
+        global_current_slide = options.global_current_slide;
         this.maxSlide = 6;
         this.init();
     }
@@ -41,19 +43,21 @@ class Example {
 
         document.querySelector(".btn-prev").addEventListener("click", btn => {
             const vw = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-            let sliderOffset = vw < 900 ? 2 : 3;
-            this.currentSlide = clampNumber(this.currentSlide - 1, 0, this.maxSlide - sliderOffset);
-            const slide = this.depts[this.currentSlide];
-            // console.log(this.currentSlide);
+            // let sliderOffset = vw < 900 ? 2 : 3;
+            let sliderOffset = 1;
+            global_current_slide = clampNumber(global_current_slide - 1, 0, this.maxSlide - sliderOffset);
+            const slide = this.depts[global_current_slide];
+            // console.log(global_current_slide);
             this.scroll.scrollTo(slide, { duration: 50 });
             this.depts.forEach(item => item === slide ? item.classList.add("selected") : item.classList.remove("selected"));
         });
         document.querySelector(".btn-next").addEventListener("click", btn => {
             const vw = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-            let sliderOffset = vw < 900 ? 2 : 3;
-            this.currentSlide = clampNumber(this.currentSlide + 1, 0, this.maxSlide - sliderOffset);
-            const slide = this.depts[this.currentSlide];
-            // console.log(this.currentSlide);
+            // let sliderOffset = vw < 900 ? 2 : 3;
+            let sliderOffset = 1;
+            global_current_slide = clampNumber(global_current_slide + 1, 0, this.maxSlide - sliderOffset);
+            const slide = this.depts[global_current_slide];
+            // console.log(global_current_slide);
             this.scroll.scrollTo(slide, { duration: 50 });
             this.depts.forEach(item => item === slide ? item.classList.add("selected") : item.classList.remove("selected"));
         });
@@ -117,6 +121,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     const example = new Example({
         root: document.querySelector('.scroll-animations-example'),
+        global_current_slide,
         depts,
     });
 
@@ -128,8 +133,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
         });
     });
 
-    depts.forEach(dept => {
-        dept.addEventListener("mouseenter", (event) => {
+    depts.forEach((dept, slideIndex) => {
+        dept.addEventListener("mouseenter", event => {
             const elem = event.target;
             // depts[0].classList.remove("selected");
             btn_open.classList.remove("white-btn");
@@ -141,11 +146,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 const rect3 = btn_open.getBoundingClientRect();
                 const isLogoOverlap = hasOverlap(rect1, rect2);
                 const isBtnOverlap = hasOverlap(rect3, rect2);
+                console.log(slideIndex);
+                global_current_slide = slideIndex;
                 isLogoOverlap ? logo.classList.add("white-logo") : logo.classList.remove("white-logo");
                 if (isBtnOverlap) { btn_open.classList.add("white-btn") };
             }
         });
-        dept.addEventListener("mouseout", (event) => {
+        dept.addEventListener("mouseout", event => {
             const elem = event.target;
             if (elem.classList.contains("dept-item")) {
                 const rect1 = logo.getBoundingClientRect();
@@ -153,6 +160,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 const rect3 = btn_open.getBoundingClientRect();
                 const isLogoOverlap = hasOverlap(rect1, rect2);
                 const isBtnOverlap = hasOverlap(rect3, rect2);
+                global_current_slide = slideIndex;
                 if (isLogoOverlap) {
                     logo.classList.remove("white-logo");
                 }

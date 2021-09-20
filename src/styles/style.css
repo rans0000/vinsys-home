@@ -713,6 +713,9 @@ ul.nav-list > li > a:hover {
     .departments-wrapper .dept-item:last-child::before {
         clip-path: polygon(0 0, 100% 5vh, 100% 100%, 0 100%);
     }
+    .departments-wrapper .dept-item:after {
+        content: none;
+    }
     .departments-wrapper .text-wrapper {
         min-height: auto;
     }

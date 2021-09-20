@@ -109,8 +109,9 @@ function typewritterEffect() {
 window.addEventListener('DOMContentLoaded', (event) => {
     const logo = document.querySelector(".logo > img");
     const navWrapper = document.querySelector(".nav-wrapper");
-    let isNavOpen = false;
     const depts = document.querySelectorAll(".dept-item");
+    const btn_open = document.querySelector(".btn-main-menu-open");
+    let isNavOpen = false;
 
     typewritterEffect();
 
@@ -131,18 +132,17 @@ window.addEventListener('DOMContentLoaded', (event) => {
         dept.addEventListener("mouseenter", (event) => {
             const elem = event.target;
             // depts[0].classList.remove("selected");
+            btn_open.classList.remove("white-btn");
             if (elem.classList.contains("dept-item")) {
                 depts.forEach(item => item === elem ? item.classList.add("selected") : item.classList.remove("selected"));
 
                 const rect1 = logo.getBoundingClientRect();
                 const rect2 = elem.getBoundingClientRect();
-                const isOverlap = hasOverlap(rect1, rect2);
-                if (isOverlap) {
-                    logo.classList.add("white-logo");
-                }
-                else {
-                    logo.classList.remove("white-logo");
-                }
+                const rect3 = btn_open.getBoundingClientRect();
+                const isLogoOverlap = hasOverlap(rect1, rect2);
+                const isBtnOverlap = hasOverlap(rect3, rect2);
+                isLogoOverlap ? logo.classList.add("white-logo") : logo.classList.remove("white-logo");
+                if (isBtnOverlap) { btn_open.classList.add("white-btn") };
             }
         });
         dept.addEventListener("mouseout", (event) => {
@@ -150,14 +150,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
             if (elem.classList.contains("dept-item")) {
                 const rect1 = logo.getBoundingClientRect();
                 const rect2 = elem.getBoundingClientRect();
-                const isOverlap = hasOverlap(rect1, rect2);
-                if (isOverlap) {
+                const rect3 = btn_open.getBoundingClientRect();
+                const isLogoOverlap = hasOverlap(rect1, rect2);
+                const isBtnOverlap = hasOverlap(rect3, rect2);
+                if (isLogoOverlap) {
                     logo.classList.remove("white-logo");
                 }
             }
         });
     });
-
-
-
 });

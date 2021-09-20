@@ -144,6 +144,9 @@ body {
 .btn-main-menu-open:active {
     animation: pulsate 0.3s forwards;
 }
+.btn-main-menu-open.white-btn {
+    filter: invert(1);
+}
 .main-wrapper {
     height: 100%;
     z-index: 1;

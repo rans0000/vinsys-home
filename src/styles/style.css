@@ -101,6 +101,7 @@ body {
     top: 0;
     left: 0;
     padding: 2rem 4rem 2rem;
+    pointer-events: none;
 }
 .header-wrapper:before {
     content: "";
@@ -121,6 +122,7 @@ body {
     /* background: url(../images/vinsys-logo.svg); */
     width: 8rem;
     height: 6rem;
+    pointer-events: all;
 }
 .header-wrapper a.logo .white-logo {
     filter: brightness(0) invert(1);
@@ -136,6 +138,7 @@ body {
     background: url(../images/btn-hamburger.svg) no-repeat 50% 50%;
     border: 0;
     padding: 0;
+    pointer-events: all;
 }
 .btn-main-menu-open:hover,
 .btn-main-menu-open:active {
@@ -428,6 +431,7 @@ body {
     justify-content: space-between;
     align-items: center;
     z-index: 4;
+    pointer-events: none;
 }
 .btn-prev,
 .btn-next {
@@ -439,6 +443,7 @@ body {
     cursor: pointer;
     background: #0f1030 url(../images/arrow-left.svg) no-repeat 50% 50%;
     background-position: calc(50% + 0.5rem);
+    pointer-events: all;
 }
 .btn-next {
     background: #0f1030 url(../images/arrow-right.svg) no-repeat 50% 50%;
@@ -501,6 +506,7 @@ body {
     width: 100%;
     padding: 1rem 8rem 2rem;
     perspective: 120rem;
+    pointer-events: all;
 }
 header.nav-header {
     display: flex;

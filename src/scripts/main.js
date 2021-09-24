@@ -10,6 +10,9 @@ function hasOverlap(rect1, rect2) {
 function hasEncircled(rect1, rect2) {
     return (rect1.right >= rect2.right && rect1.left <= rect2.left && rect1.bottom >= rect2.bottom && rect1.top <= rect2.top);
 }
+const isTouchDevice = (function () {
+    return (('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0));
+})();
 function setupScrollTracking(depts, parentId) {
     let isScrolling;
     const parent = document.getElementById(parentId);
@@ -158,6 +161,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     depts.forEach((dept, slideIndex) => {
         dept.addEventListener("mouseenter", event => {
+            if (isTouchDevice) { return; }
             const elem = event.target;
             // depts[0].classList.remove("selected");
             btn_open.classList.remove("white-btn");
@@ -175,6 +179,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             }
         });
         dept.addEventListener("mouseout", event => {
+            if (isTouchDevice) { return; }
             const elem = event.target;
             if (elem.classList.contains("dept-item")) {
                 const rect1 = logo.getBoundingClientRect();

@@ -146,7 +146,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 const rect3 = btn_open.getBoundingClientRect();
                 const isLogoOverlap = hasOverlap(rect1, rect2);
                 const isBtnOverlap = hasOverlap(rect3, rect2);
-                console.log(slideIndex);
                 global_current_slide = slideIndex;
                 isLogoOverlap ? logo.classList.add("white-logo") : logo.classList.remove("white-logo");
                 if (isBtnOverlap) { btn_open.classList.add("white-btn") };

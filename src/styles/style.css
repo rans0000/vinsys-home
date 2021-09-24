@@ -499,6 +499,7 @@ body {
     transition: opacity 0.5s, visibility 0s 0.5s;
 }
 .nav-wrapper.open {
+    pointer-events: all;
     opacity: 1;
     visibility: visible;
     /* overflow-y: auto; */

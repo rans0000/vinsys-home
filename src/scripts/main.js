@@ -1,10 +1,30 @@
 import LocomotiveScroll from 'locomotive-scroll';
+import scrollSnapPolyfill from 'css-scroll-snap-polyfill';
 import Typed from 'typed.js';
 
 let global_current_slide = 1;
 
 function hasOverlap(rect1, rect2) {
     return !(rect1.right < rect2.left || rect1.left > rect2.right || rect1.bottom < rect2.top || rect1.top > rect2.bottom);
+}
+function hasEncircled(rect1, rect2) {
+    return (rect1.right >= rect2.right && rect1.left <= rect2.left && rect1.bottom >= rect2.bottom && rect1.top <= rect2.top);
+}
+function setupScrollTracking(depts, parentId) {
+    let isScrolling;
+    const parent = document.getElementById(parentId);
+    const parentRect = parent.getBoundingClientRect();
+
+    parent.addEventListener('scroll', function (event) {
+        window.clearTimeout(isScrolling);
+        isScrolling = setTimeout(function () {
+            depts.forEach(dept => {
+                const rect2 = dept.getBoundingClientRect();
+                const isOverlap = hasEncircled(parentRect, rect2);
+                isOverlap ? dept.classList.add("selected") : dept.classList.remove("selected");
+            });
+        }, 66);
+    }, false);
 }
 const clampNumber = (num, a, b) => Math.max(Math.min(num, Math.max(a, b)), Math.min(a, b));
 class Example {
@@ -28,15 +48,15 @@ class Example {
             multiplier: 2,
             lerp: 0.07,
             smartphone: {
-                smooth: true,
-                breakpoint: 767,
+                smooth: false,
+                breakpoint: 768,
                 direction: 'vertical',
             },
             tablet: {
-                smooth: true,
-                breakpoint: 768,
-                direction: 'horizontal',
-                horizontalGesture: 'horizontal',
+                smooth: false,
+                breakpoint: 1024,
+                // direction: 'horizontal',
+                // horizontalGesture: 'horizontal',
             }
         });
         window.dispatchEvent(new Event('resize'));
@@ -117,6 +137,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     const btn_open = document.querySelector(".btn-main-menu-open");
     let isNavOpen = false;
 
+    if (!CSS.supports('scroll-snap-align: start')) { scrollSnapPolyfill(); }
     typewritterEffect();
 
     const example = new Example({
@@ -124,6 +145,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
         global_current_slide,
         depts,
     });
+
+    setupScrollTracking(depts, "departments-wrapper");
 
     document.querySelectorAll(".btn-main-menu-open, .btn-main-menu-close").forEach(btn => {
         btn.addEventListener("click", event => {

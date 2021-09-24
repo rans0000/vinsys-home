@@ -23,6 +23,7 @@
     "clean-webpack-plugin": "^3.0.0",
     "compression-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^6.0.3",
+    "css-scroll-snap-polyfill": "^0.1.2",
     "cssnano": "^4.1.10",
     "favicons-webpack-plugin": "^3.0.1",
     "html-webpack-plugin": "^4.3.0",

@@ -635,6 +635,24 @@ ul.nav-list > li > a:hover {
 }
 
 @media only screen and (max-width: 1365px) {
+    .header-wrapper:before {
+        opacity: 1;
+    }
+    .header-wrapper a.logo:link,
+    .header-wrapper a.logo:visited {
+        width: 5rem;
+        height: 3.75rem;
+    }
+    .logo > img {
+        filter: brightness(0) invert(1);
+        height: auto;
+        width: 100%;
+    }
+    .btn-main-menu-open {
+        width: 3.75rem;
+        height: 3.75rem;
+        filter: brightness(0) invert(1);
+    }
     .departments-wrapper {
         scroll-snap-type: y mandatory;
         width: 100vw;
@@ -655,6 +673,9 @@ ul.nav-list > li > a:hover {
     }
     .departments-wrapper .dept-item.selected::after {
         content: none;
+    }
+    footer.footer-wrapper {
+        display: none;
     }
 }
 
@@ -681,43 +702,27 @@ ul.nav-list > li > a:hover {
         width: calc((100vw / 2));
     }
 }
+*/
 
 @media only screen and (max-width: 767px) {
-    .has-scroll-smooth body {
+    /* .has-scroll-smooth body {
         overflow-y: auto;
-    }
-    .header-wrapper:before {
-        opacity: 1;
-    }
-    .header-wrapper a.logo:link,
-    .header-wrapper a.logo:visited {
-        width: 5rem;
-        height: 3.75rem;
-    }
-    .logo > img {
-        filter: brightness(0) invert(1);
-        height: auto;
-        width: 100%;
-    }
-    .btn-main-menu-open {
-        width: 3.75rem;
-        height: 3.75rem;
-        filter: brightness(0) invert(1);
-    }
-    .departments-inner-wrapper {
+    } */
+
+    /* .departments-inner-wrapper {
         transform: none !important;
         width: 100vw;
         height: auto;
         flex-wrap: wrap;
         flex-direction: column;
-    }
-    .departments-wrapper .dept-item {
+    } */
+    /* .departments-wrapper .dept-item {
         width: 100vw;
         height: 100vh;
         margin-bottom: -10vh;
         display: flex;
-    }
-    .departments-wrapper .dept-item:before {
+    } */
+    /* .departments-wrapper .dept-item:before {
         filter: sepia(1);
     }
     .departments-wrapper .dept-item.is-inview:before {
@@ -739,8 +744,8 @@ ul.nav-list > li > a:hover {
     }
     .departments-wrapper .dept-item:after {
         content: none;
-    }
-    .departments-wrapper .text-wrapper {
+    } */
+    /* .departments-wrapper .text-wrapper {
         min-height: auto;
     }
     .departments-wrapper .text-wrapper > .title {
@@ -767,38 +772,46 @@ ul.nav-list > li > a:hover {
     .nav-section {
         flex-basis: 100%;
         width: 100%;
-    }
-    footer.footer-wrapper {
-        display: none;
-    }
-} */
+    } */
+}
 
-/* @media only screen and (max-width: 360px) {
+@media only screen and (max-width: 360px) {
     .departments-wrapper .text-wrapper > .inner {
         padding-right: 0;
     }
-    .departments-wrapper .dept-item:before {
+    /* .departments-wrapper .dept-item:before {
         background-size: cover;
-    }
+    } */
     .typewritter-inner {
         font-size: 3rem;
     }
-} */
+}
 
-/* @media only screen and (max-height: 480px) and (orientation: landscape) {
+@media only screen and (max-height: 480px) and (orientation: landscape) {
+    .departments-wrapper {
+        scroll-snap-type: y proximity;
+    }
     .departments-wrapper .dept-item {
         height: auto;
         margin: 0;
-        padding: 4rem;
+        padding: 7.75rem 4rem 4rem;
     }
     .departments-wrapper .dept-item::before,
     .departments-wrapper .dept-item:first-child::before,
-    .departments-wrapper .dept-item:last-child::before {
+    .departments-wrapper .dept-item:last-child::before,
+    .departments-wrapper .dept-item .text-wrapper > .title,
+    .departments-wrapper .text-wrapper > .inner,
+    .departments-wrapper .dept-item .btn-arrowed {
         clip-path: none;
+        opacity: 1;
     }
     .departments-wrapper .text-wrapper {
         max-width: none;
         max-height: none;
+    }
+    .departments-wrapper .dept-item .text-wrapper > .title,
+    .departments-wrapper .text-wrapper > .inner {
+        color: #fff;
     }
     .btn-arrowed,
     .departments-wrapper .text-wrapper > .inner,
@@ -809,6 +822,7 @@ ul.nav-list > li > a:hover {
     .departments-wrapper .dept-item.selected .btn-arrowed {
         transform: none;
     }
+    .departments-wrapper .dept-item .text-wrapper > .title,
     .departments-wrapper .dept-item .text-wrapper > .title::before,
     .departments-wrapper .dept-item:hover .text-wrapper > .title::before {
         transform: none;
@@ -817,4 +831,4 @@ ul.nav-list > li > a:hover {
     .dept-contact .btn-arrowed {
         margin-top: 2rem;
     }
-} */
+}

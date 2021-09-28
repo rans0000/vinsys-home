@@ -655,7 +655,7 @@ ul.nav-list > li > a:hover {
         filter: brightness(0) invert(1);
     }
     .nav-items-wrapper {
-        padding-bottom: 5rem;
+        padding-bottom: 12rem;
     }
     .departments-wrapper {
         scroll-snap-type: y mandatory;

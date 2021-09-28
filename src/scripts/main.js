@@ -7,12 +7,15 @@ let global_current_slide = 1;
 function hasOverlap(rect1, rect2) {
     return !(rect1.right < rect2.left || rect1.left > rect2.right || rect1.bottom < rect2.top || rect1.top > rect2.bottom);
 }
+
 function hasEncircled(rect1, rect2) {
     return (rect1.right >= rect2.right && rect1.left <= rect2.left && rect1.bottom >= rect2.bottom && rect1.top <= rect2.top);
 }
+
 const isTouchDevice = (function () {
     return (('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0));
 })();
+
 function setupScrollTracking(depts, parentId) {
     let isScrolling;
     const parent = document.getElementById(parentId);
@@ -30,7 +33,7 @@ function setupScrollTracking(depts, parentId) {
     }, false);
 }
 const clampNumber = (num, a, b) => Math.max(Math.min(num, Math.max(a, b)), Math.min(a, b));
-class Example {
+class LocoScrollSlider {
     constructor(options) {
         this.root = options.root;
         this.depts = options.depts;
@@ -62,7 +65,7 @@ class Example {
                 // horizontalGesture: 'horizontal',
             }
         });
-        window.dispatchEvent(new Event('resize'));
+        // window.dispatchEvent(new Event('resize'));
 
         document.querySelector(".btn-prev").addEventListener("click", btn => {
             const vw = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
@@ -114,7 +117,6 @@ function typewritterEffect() {
     };
 
     var typed = new Typed('.typewritter-inner', options);
-    // set esc event listener
     window.addEventListener("keydown", removeEscListener);
     typewritterEl.addEventListener("click", removeEscListener);
 
@@ -132,6 +134,14 @@ function typewritterEffect() {
     }
 }
 
+function initScroller(depts) {
+    const scroller = new LocoScrollSlider({
+        root: document.querySelector('.scroll-animations-example'),
+        global_current_slide,
+        depts,
+    });
+    return scroller;
+}
 
 window.addEventListener('DOMContentLoaded', (event) => {
     const logo = document.querySelector(".logo > img");
@@ -143,13 +153,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
     if (!CSS.supports('scroll-snap-align: start')) { scrollSnapPolyfill(); }
     typewritterEffect();
 
-    const example = new Example({
-        root: document.querySelector('.scroll-animations-example'),
-        global_current_slide,
-        depts,
-    });
+    let scroller = initScroller(depts);
 
     setupScrollTracking(depts, "departments-wrapper");
+    window.addEventListener("resize", () => {
+        scroller.scroll.init();
+        scroller = initScroller(depts);
+    });
 
     document.querySelectorAll(".btn-main-menu-open, .btn-main-menu-close").forEach(btn => {
         btn.addEventListener("click", event => {
